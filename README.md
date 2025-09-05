@@ -129,9 +129,6 @@ Restart Suricata service now? (y/n) [y]: y
 ## References
 
 * [Suricata Documentation](https://suricata.io/documentation/)
-* [PyYAML](https://pyyaml.org/)
-* [psutil](https://github.com/giampaolo/psutil)
-
 ---
 
 ## Future Enhancements
