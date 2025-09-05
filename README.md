@@ -4,7 +4,7 @@ This project provides a modular, interactive command-line utility for configurin
 
 ---
 
-## ✨ Features
+## Features
 
 * Interactive setup via prompts (choose interface, IDS/IPS mode, log directory, ruleset)
 * Automatic backup of `/etc/suricata/suricata.yaml` before changes
@@ -16,7 +16,7 @@ This project provides a modular, interactive command-line utility for configurin
 
 ---
 
-## 📂 Repository Structure
+## Repository Structure
 
 ```
 suricata-setup/
@@ -25,42 +25,45 @@ suricata-setup/
 ├── interface_manager.py    # Detects and selects network interface
 ├── rules_manager.py        # Handles rule source selection (ET Open, local)
 ├── service_manager.py      # Validates config and manages Suricata service
+├── install.sh              # Installs Suricata + ET Open rules + launches setup
 ```
 
 ---
 
-## 🚀 Installation
+## Installation & Initial Launch
 
-### 1. Clone Repo
+1. Clone this repo:
 
-```bash
-git clone https://github.com/<your-repo>/suricata-setup.git
-cd suricata-setup
-```
+   ```bash
+   git clone https://github.com/<your-repo>/suricata-setup.git
+   cd suricata-setup
+   ```
 
-### 2. Python Environment
+2. Make the installer executable:
 
-It is recommended to use **pyenv** or a virtual environment.
+   ```bash
+   chmod +x install.sh
+   ```
 
-Example with `venv`:
+3. Run the installer:
 
-```bash
-python3 -m venv venv
-source venv/bin/activate
-pip install pyyaml psutil
-```
+   ```bash
+   ./install.sh
+   ```
 
-### 3. Make Script Executable
+   This will:
 
-```bash
-chmod +x suricata-setup.py
-```
+   * Remove any old Suricata installs
+   * Install dependencies and Suricata from Ubuntu repositories
+   * Enable and start Suricata service
+   * Install and enable Emerging Threats Open rules
+   * Launch the interactive setup tool (`suricata-setup.py`)
 
 ---
 
-## 🛠 Usage
+## Usage
 
-Run the interactive setup:
+If you need to run the interactive setup again:
 
 ```bash
 ./suricata-setup.py
@@ -79,15 +82,15 @@ The script will:
 
 ---
 
-## 🔒 Safety Features
+## Safety Features
 
-* **Backup**: Saves `.bak` file before each change
-* **Validation**: Uses `suricata -T` before restart
-* **Fail-Safe**: Will not restart Suricata if config is invalid
+* Backup: Saves `.bak` file before each change
+* Validation: Uses `suricata -T` before restart
+* Fail-Safe: Will not restart Suricata if config is invalid
 
 ---
 
-## 📝 Example Walkthrough
+## Example Walkthrough
 
 ```
 === Suricata Interactive Setup ===
@@ -114,16 +117,16 @@ Restart Suricata service now? (y/n) [y]: y
 
 ---
 
-## 📌 Requirements
+## Requirements
 
 * Ubuntu (20.04+ recommended)
-* Suricata installed (`sudo apt install suricata`)
+* Suricata installed (`sudo apt install suricata`) — handled by `install.sh`
 * Python 3.8+
 * Packages: `pyyaml`, `psutil`
 
 ---
 
-## 📖 References
+## References
 
 * [Suricata Documentation](https://suricata.io/documentation/)
 * [PyYAML](https://pyyaml.org/)
@@ -131,7 +134,7 @@ Restart Suricata service now? (y/n) [y]: y
 
 ---
 
-## 🔮 Future Enhancements
+## Future Enhancements
 
 * Auto-restore last known good config if validation fails
 * Support for advanced rule management (categories, enable/disable)
