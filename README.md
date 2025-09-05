@@ -25,7 +25,7 @@ suricata-setup/
 ├── interface_manager.py    # Detects and selects network interface
 ├── rules_manager.py        # Handles rule source selection (ET Open, local)
 ├── service_manager.py      # Validates config and manages Suricata service
-├── install.sh              # Installs Suricata + ET Open rules + launches setup
+├── install-suricata.sh     # Installs Suricata + ET Open rules + launches setup
 ```
 
 ---
@@ -35,20 +35,20 @@ suricata-setup/
 1. Clone this repo:
 
    ```bash
-   git clone https://github.com/<your-repo>/suricata-setup.git
+   git clone https://github.com/Ramnet-Lab/suricata-setup.git
    cd suricata-setup
    ```
 
 2. Make the installer executable:
 
    ```bash
-   chmod +x install.sh
+   chmod +x install-suricata.sh
    ```
 
 3. Run the installer:
 
    ```bash
-   ./install.sh
+   ./install-suricata.sh
    ```
 
    This will:
@@ -120,7 +120,7 @@ Restart Suricata service now? (y/n) [y]: y
 ## Requirements
 
 * Ubuntu (20.04+ recommended)
-* Suricata installed (`sudo apt install suricata`) — handled by `install.sh`
+* Suricata installed (`sudo apt install suricata`) — handled by `install-suricata.sh`
 * Python 3.8+
 * Packages: `pyyaml`, `psutil`
 
